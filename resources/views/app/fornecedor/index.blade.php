@@ -15,14 +15,15 @@
 @endphp
 
 @isset($fornecedores)
-    Fornecedor: {{ $fornecedores[1]['nome'] }}
-    <br>
-    Status: {{ $fornecedores[1]['status'] }}
-    <br>
-    CNPJ: {{ $fornecedores[1]['cnpj'] ?? '' }}
-    <!--
-        $variável testada não estiver definida (isset)
-        ou
-        $variável testada possui o valor null
-    -->
+    @for($i = 0; isset($fornecedores[$i]); $i++)
+        Fornecedor: {{ $fornecedores[$i]['nome'] }}
+        <br>
+        Status: {{ $fornecedores[$i]['status'] }}
+        <br>
+        CNPJ: {{ $fornecedores[$i]['cnpj'] ?? '' }}
+        <br>
+        Telefone: ({{ $fornecedores[$i]['ddd'] ?? '' }}) {{ $fornecedores[$i]['telefone'] ?? '' }}
+        <hr>
+    @endfor
 @endisset
+
